@@ -3,12 +3,14 @@ from fastapi import FastAPI
 from fastapi_hypermodel import HyperModel
 import book_router
 import author_router
+import books_authors_router
 
 
 app = FastAPI()
 
 app.include_router(book_router.router)
 app.include_router(author_router.router)
+app.include_router(books_authors_router.router)
 
 HyperModel.init_app(app)
 

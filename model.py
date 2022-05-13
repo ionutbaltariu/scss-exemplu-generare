@@ -1,5 +1,6 @@
 from Book import Book
 from Author import Author
+from Books_Authors import Books_Authors
 from db import Session, engine
 
 
@@ -159,6 +160,13 @@ def get_author_by_author_id(author_id):
     """
     return get_entity_by_identifier(Author, "author_id", author_id)
 
+def get_books_authors_by_id(id):
+    """
+    Wrapper for an ORM call that is retrieving a(n) entity by its id.
+    :param id: TODO
+    """
+    return get_entity_by_identifier(Books_Authors, "id", id)
+
 
 def get_all_books_with_filters(**kwargs):
     """
@@ -172,6 +180,12 @@ def get_all_authors_with_filters(**kwargs):
     :param kwargs: the parameters by which the filters will be made
     """
     return get_all_entities(Author, **kwargs)
+def get_all_books_authors_with_filters(**kwargs):
+    """
+    Wrapper for an ORM call that is retrieving all books_authors by id
+    :param kwargs: the parameters by which the filters will be made
+    """
+    return get_all_entities(Books_Authors, **kwargs)
 
 
 def update_book(isbn, book):
@@ -188,6 +202,13 @@ def update_author(author_id, author):
     :param author: a dictionary containing the fields of the author - can be partial
     """
     return update_entity_by_identifier(Author, "author_id", author_id, author)
+def update_books_authors(id, books_authors):
+    """
+    Wrapper for an ORM call that updates a(n) books_authors in the database.
+    :param id: the identifier of the Books_Authors
+    :param books_authors: a dictionary containing the fields of the books_authors - can be partial
+    """
+    return update_entity_by_identifier(Books_Authors, "id", id, books_authors)
 
 
 def delete_book_by_isbn(isbn):
@@ -202,6 +223,12 @@ def delete_author_by_author_id(author_id):
     :param author_id: author_id of the author that is to be deleted
     """
     return delete_entity_by_identifier(Author, "author_id", author_id)
+def delete_books_authors_by_id(id):
+    """
+    Wrapper for an ORM call that is deleting a(n) books_authors by its id.
+    :param id: id of the books_authors that is to be deleted
+    """
+    return delete_entity_by_identifier(Books_Authors, "id", id)
 
 
 def insert_book(**kwargs):
@@ -216,4 +243,10 @@ def insert_author(**kwargs):
     :param kwargs: the attributes of the Author that is to be created
     """
     return insert_entity(Author, **kwargs)
+def insert_books_authors(**kwargs):
+    """
+    Wrapper for an ORM call that is creating a(n) books_authors.
+    :param kwargs: the attributes of the Books_Authors that is to be created
+    """
+    return insert_entity(Books_Authors, **kwargs)
 
